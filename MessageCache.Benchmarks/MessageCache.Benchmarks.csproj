@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <Optimize>true</Optimize>
+        <PlatformTarget>AnyCPU</PlatformTarget>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="BenchmarkDotNet" Version="0.14.*" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.*" />
+        <PackageReference Include="System.IO.Pipelines" Version="8.*" />
+    </ItemGroup>
+
+    <!-- Include source files from the server project directly (avoids circular ref) -->
+    <ItemGroup>
+        <Compile Include="..\MessageCache\Core\CacheEntry.cs" Link="Core\CacheEntry.cs" />
+        <Compile Include="..\MessageCache\Core\CacheStatistics.cs" Link="Core\CacheStatistics.cs" />
+        <Compile Include="..\MessageCache\Core\CacheStorage.cs" Link="Core\CacheStorage.cs" />
+        <Compile Include="..\MessageCache\Protocol\CommandType.cs" Link="Protocol\CommandType.cs" />
+        <Compile Include="..\MessageCache\Protocol\ParsedCommand.cs" Link="Protocol\ParsedCommand.cs" />
+        <Compile Include="..\MessageCache\Protocol\CommandParser.cs" Link="Protocol\CommandParser.cs" />
+        <Compile Include="..\MessageCache\Protocol\ResponseWriter.cs" Link="Protocol\ResponseWriter.cs" />
+    </ItemGroup>
+
+</Project>
